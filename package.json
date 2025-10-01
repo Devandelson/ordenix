@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://devandelson.github.io/Ordenix.github.io/",
+  "homepage": "https://devandelson.github.io/ordenix/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

@@ -14,7 +14,7 @@ export default function Header() {
             if (item.cliente?.estado === "Pendiente") {
                 pendingCount++;
             } else if (item.cliente?.estado !== "Cancelado") {
-                totalEarnings += item.total?.monto ?? 0;
+                totalEarnings += Number(item.total?.monto);
             }
         }
 

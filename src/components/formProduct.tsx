@@ -158,10 +158,18 @@ export default function FormProduct() {
         })
 
         // reset data
-        setValuesItemsProducts(emptyData);
-        setProducts(valuesItemsProducts.productos);
-
-        setReset((prev) => prev == 'key1' ? 'key2' : 'key1');
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "🚀 ¡Listo! Los cambios quedaron guardados sin problemas.",
+            showConfirmButton: false,
+            timer: 1500
+        }).then(() => {
+            setValuesItemsProducts(emptyData);
+            setProducts(valuesItemsProducts.productos);
+            setVisibleForm(false);
+            setReset((prev) => prev == 'key1' ? 'key2' : 'key1');
+        });
     }
 
     return (

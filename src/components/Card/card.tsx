@@ -224,7 +224,7 @@ function FooterCard({ status = 'Completo', setDetail, images, accion, IdOrden }:
         <div className="flex items-center justify-between gap-3" >
             {
                 status != 'Cancelado' ?
-                    (<ButtonPending clasStatus={clasStatus} accion={accion} handlePay={handlePay} handleShowDetail={handleShowDetail}></ButtonPending>) : (<ButtonCancel idOrden={IdOrden}></ButtonCancel>)
+                    (<ButtonPending clasStatus={clasStatus} accion={accion} handlePay={handlePay} status={status} handleShowDetail={handleShowDetail}></ButtonPending>) : (<ButtonCancel idOrden={IdOrden}></ButtonCancel>)
             }
         </div>
     )
@@ -239,9 +239,10 @@ type buttonsProsGeneral = {
 type buttonPending = buttonsProsGeneral & {
     handleShowDetail: (e: React.MouseEvent<HTMLButtonElement>) => void;
     handlePay: (e: React.MouseEvent<HTMLButtonElement>, status: string) => void;
+    status: string;
 };
 
-function ButtonPending({ handleShowDetail, handlePay, clasStatus, accion }: buttonPending) {
+function ButtonPending({ handleShowDetail, handlePay, clasStatus, accion, status }: buttonPending) {
     return (
         <>
             <button className="px-5 py-3 rounded-lg font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 transition transform active:scale-95 grow" type="button"
@@ -320,11 +321,11 @@ function desitionPay(setData: React.Dispatch<React.SetStateAction<DataJsonTypes[
                     if (item.orden?.id_orden?.toLocaleLowerCase() === IdOrden.toLocaleLowerCase()) {
                         if (item.cliente) {
                             item.cliente.estado = 'Completo';
+                            item.accion = 'Pago';
                         }
                     }
                 })
-
-
+                
                 return copyPrev;
             })
 

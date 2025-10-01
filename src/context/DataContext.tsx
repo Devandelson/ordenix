@@ -19,13 +19,15 @@ export function DataProvider({ children }: { children: ReactNode }) {
     // cargar desde localStorage o JSON
     useEffect(() => {
         const saved = localStorage.getItem("data");
-
         if (saved) {
-            setData(JSON.parse(localStorage.getItem('data') ?? '[]'));
+            setData(JSON.parse(localStorage.getItem('data') ?? '[]'));   
+        
         } else {
             setData(dataJSON ?? []); // primera vez, carga el JSON del archivo
-        }
+        } 
     }, []);
+    
+    
 
     // guardar en localStorage cada vez que cambien
     useEffect(() => {
